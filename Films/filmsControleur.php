@@ -13,7 +13,7 @@
 			$unModele=new filmsModele($requete,array($titre,$duree,$res,$pochete));
 			$stmt=$unModele->executer();
 			$tabRes['action']="enregistrer";
-			$tabRes['msg']="Film bien enregistre";
+			$tabRes['msg']="<span class='alert alert-success'>Film bien enregistré.</span>";
 		}catch(Exception $e){
 		}finally{
 			unset($unModele);
@@ -50,11 +50,11 @@
 				$unModele=new filmsModele($requete,array($idf));
 				$stmt=$unModele->executer();
 				$tabRes['action']="enlever";
-				$tabRes['msg']="Film ".$idf." bien enleve";
+				$tabRes['msg']="<span class='alert alert-success'>Le film ".$idf." bien enlevé.";
 			}
 			else{
 				$tabRes['action']="enlever";
-				$tabRes['msg']="Film ".$idf." introuvable";
+				$tabRes['msg']="<span class='alert alert-danger'>Film ".$idf." introuvable.</span>";
 			}
 		}catch(Exception $e){
 		}finally{
@@ -103,14 +103,14 @@
 			$unModele=new filmsModele($requete,array($titre,$duree,$res,$pochette,$idf));
 			$stmt=$unModele->executer();
 			$tabRes['action']="modifier";
-			$tabRes['msg']="Film $idf bien modifie";
+			$tabRes['msg']="<span class='alert alert-success'>Le film $idf à bien été modifié.";
 		}catch(Exception $e){
 		}finally{
 			unset($unModele);
 		}
 	}
 	//******************************************************
-	//Contr�leur
+	//Controleur
 	$action=$_POST['action'];
 	switch($action){
 		case "enregistrer" :

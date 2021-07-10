@@ -96,9 +96,10 @@
 			<div class="container my-5">
 				<div class="row">
 					<!---->
-					<div class="col-sm-12">
+					<div class="col-sm-12 col-md-2"></div>
+					<div class="col-sm-12 col-md-10">
 						<h2 class="text-center">Bienvenue <?php echo $_SESSION['prenomSess'];?></h2>
-						<h3 class="text-center mb-5 pb-4">dans l'espace administrateur</h3>
+						<h3 class="text-center pb-4">dans l'espace administrateur</h3>
 					</div>
 
 					<div class="col-12 col-md-3 col-xl-2 ">
@@ -107,13 +108,14 @@
 						<input type="button" value="Enregistrer" onClick="rendreVisible('divEnreg');" class="btn btn-outline-success mb-3">
 						<input type="button" value="Lister" onClick="lister();$('#contenu').show();" class="btn btn-outline-warning mb-3" >
 						<input type="button" value="Modifier" onClick="rendreVisible('divFiche');" class="btn btn-outline-info mb-3">
-						<?php
+						<input type="button" value="Supprimer" onClick="rendreVisible('divEnlever');" class="btn btn-outline-danger mb-3">
+						<!--?php
 							if ($_SESSION['roleSess']=='A'){
 								echo '<input type="button" value="Supprimer" onClick="rendreVisible(\'divEnlever\');" class="btn btn-outline-danger mb-3">';
 							} else {
 								echo '<input type="button" value="Supprimer" onclick="montrer(\'accesRefuse\');" class="btn btn-light mb-3">';
 							}			
-						?>
+						?-->
 							
 						</div>
 
@@ -128,8 +130,8 @@
 					<div class="col-12 col-md-9 col-xl-10 bgcolor pt-2 pb-2">
 						<div id="divEnreg">
 							<form id="formEnreg">
-								<h3>Enregistrer film</h3><br><br>
-								<span onClick="rendreInvisible('divEnreg')">X</span><br>
+								<h3>Enregistrer film</h3>
+								<hr>
 								Titre:<input type="text" id="titre" name="titre"><br>
 								Duree:<input type="text" id="duree" name="duree"><br>
 								Realisateur:<input type="text" id="res" name="res"><br><br>
@@ -283,8 +285,9 @@
 						
 						<div id="divEnlever">
 							<form id="formEnlever">
-								<h3>Enlever film</h3><br><br>
-								<span onClick="rendreInvisible('divEnlever')">X</span><br>
+								<h3>Supprimer un film</h3>
+								<hr>
+								<h5>Entrez le numéro du film à supprimer</h5>
 								Numero:<input type="text" id="numE" name="numE"><br>
 								<!--<input type="hidden" name="action" value="enlever"> pour serialize() dans Requetes -->
 								<input type="button" value="Envoyer" onClick="enlever();"><br>
@@ -292,7 +295,9 @@
 						</div>
 						<div id="divFiche">
 							<form id="formFiche">
-								<h3>Obtenir fiche film</h3><br><br>
+								<h3>Modifier un film</h3>
+								<hr>
+								<h5>Entrez le numéro du film à modifier</h5>
 								<span onClick="rendreInvisible('divFiche')">X</span><br>
 								Numero:<input type="text" id="numF" name="numF"><br>
 								<input type="button" value="Envoyer" onClick="obtenirFiche();"><br>
@@ -301,10 +306,11 @@
 						
 						
 						
-						<div id="divFormFiche" style="position:absolute;top:10%;left:50%; display:none">
+						<div id="divFormFiche">
 							<form id="formFicheF">
-								<h3></h3><br><br>
-								<span onClick="rendreInvisible('divFormFiche')">X</span><br>
+								<h3>Modifier un film</h3>
+								<hr>
+								<h5>Modifiez les informations du film</h5>
 								<input type="hidden" id="idf" name="idf">
 								Titre:<input type="text" id="titreF" name="titreF"><br>
 								Duree:<input type="text" id="dureeF" name="dureeF"><br>
@@ -313,8 +319,8 @@
 								<input type="button" value="Modifier" onClick="modifier();"><br>
 							</form>
 						</div>
-						<div id="contenu" style="position:absolute;top:25%;left:20%;"></div>
-						<div id="messages" class="alert alert-success"></div>
+						<div id="contenu"></div>
+						<div id="messages"></div>
 					</div>
 				</div>				
 			</div>

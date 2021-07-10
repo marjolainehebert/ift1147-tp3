@@ -1,16 +1,20 @@
 //vue films
 function listerF(listFilms){
 	var taille;
-	var rep="<div class='table-users' style='overflow: scroll; height: 500px;'>";
-	rep+="<div class='header'>Liste des films<span style='float:right;padding-right:10px;cursor:pointer;' onClick=\"$('#contenu').hide();\">X</span></div>";
-	rep+="<table cellspacing='0'>";
-	rep+="<tr><th>NUMERO</th><th>TITRE</th><th>DUREE</th><th>REALISATEUR</th><th>POCHETTE</th></tr>";
+	var rep="<h3>Liste des films</h3><hr>";
+	rep+='<table class="table table-striped">';
+    rep+='<tr><th>ID</th><th>Titre</th><th>Durée</th><th>Réalisateur</th><th>Pochette</th></tr>';
+
 	taille=listFilms.length;
 	for(var i=0; i<taille; i++){
-		rep+="<tr><td>"+listFilms[i].idf+"</td><td>"+listFilms[i].titre+"</td><td>"+listFilms[i].duree+"</td><td>"+listFilms[i].res+"</td><td><img src='pochettes/"+listFilms[i].pochette+"' width=80 height=80></td></tr>";		 
+		rep+="<tr><td>"+listFilms[i].idf;
+		rep+="</td><td>"+listFilms[i].titre;
+		rep+="</td><td>"+listFilms[i].duree;
+		rep+="</td><td>"+listFilms[i].res;
+		rep+="</td><td><img src='pochettes/"+listFilms[i].pochette+"' width=80 height=80></td>";
+		rep+="</tr>";		 
 	}
 	rep+="</table>";
-	rep+="</div>";
 	$('#contenu').html(rep);
 }
 
@@ -26,7 +30,7 @@ function afficherFiche(reponse){
 	$('#divFormFiche').show();
 	document.getElementById('divFormFiche').style.display='block';
   }else{
-	$('#messages').html("Film "+$('#numF').val()+" introuvable");
+	$('#messages').html("<span class='alert alert-danger'>Film "+$('#numF').val()+" introuvable</span>");
 	setTimeout(function(){ $('#messages').html(""); }, 5000);
   }
 
