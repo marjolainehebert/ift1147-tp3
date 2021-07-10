@@ -93,7 +93,11 @@ h5.modal-title {
     font-size: 0.8rem;
     display:none;
 }
-
+ #messages {
+    position:absolute;
+    top:2%;
+    right:2%;
+ }
 
 
 /* autres */
