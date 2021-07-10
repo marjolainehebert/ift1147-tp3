@@ -1,0 +1,246 @@
+/* Entête et navigation */
+
+section{
+    padding-top:40px;
+    padding-bottom:40px;
+}
+
+.header-section{
+    background-color:#1c1c1e;
+}
+
+.logo {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center
+}
+
+.logo img{
+    max-width:55px;
+    height:auto; padding-right:20px;
+}
+
+.logo a{
+    color:#FFC107;
+    font-size:2rem;
+}
+
+@media screen and (min-width: 800px) {
+    .logo {
+        justify-content: start;
+    }
+}
+.nav-right a{
+    font-size:0.875rem;
+    color:#ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.nav-right a:hover{
+    color:#FFC107;
+}
+.nav-right .btn{
+    color:#000000;
+}
+
+.nav-right a:hover{
+    color:#ffffff;
+}
+
+
+/* formulaires d'enregistrement */
+.col-50 {
+    display:flex;
+    justify-content: space-between;
+    border-top:1px solid #dee2e6;
+    padding-top:20px;
+}
+
+.col-50 div {
+    width:48%;
+}
+
+.formulaires input{
+    width:100%;
+    margin-bottom:1rem;
+}
+.formulaires input.radio{
+    width:auto;
+    margin-bottom:0;
+}
+
+.formulaires label{
+    margin-bottom:0;
+}
+h5.modal-title {
+    font-weight:bold;
+    font-size: 1.125rem;
+}
+
+
+#messagePrenom, #messageNom, #messageCourriel, 
+#messageMdpVide, #messageMdpErrone, 
+#messageConfMdpVide, #messageConfMdpErrone, #messageNaissance, 
+#messageCourrielMembre, #messageMdpMembreVide, #messageMdpMembreErrone, 
+#messageTitre, #messageRealis, #messageCateg, #messageDuree, #messageLangue, #messageDate, #messagePrix, 
+#messageUrl, #messageSupprimer, #messageModifier, #messageCourrielM, #messageStatut, #messagePrenomPM, #messageNomPM, #messageCourrielPM, #messageMdpVidePM, #messageMdpErronePM, #messageConfMdpVidePM, #messageConfMdpErronePM, #messageNaissancePM 
+{
+    width:100% !important;
+    color:red;
+    font-weight: bold;
+    font-size: 0.8rem;
+    display:none;
+}
+
+
+
+/* autres */
+@media (max-width: 768px){
+    .mobile-display-none{
+        display:none;
+    }
+}
+
+h1{font-size:2.5rem;};
+.red {
+    color: #FF4E50;
+}
+
+.btn {
+    font-weight:700;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    padding:0.8rem 2rem;
+}
+
+.note {
+    color:#939393;
+    font-size:0.8rem;
+}
+p.genre{
+    margin-bottom:0.25rem;
+}
+.small{
+    line-height:1rem;
+}
+.jaune{
+    color:#FFC107;
+}
+.gris {
+    color:#939393;
+}
+.caps{
+    text-transform: uppercase;
+} 
+
+.prix{
+    font-size: 1.25rem;
+    font-weight:900;
+    color:#000;
+}
+
+a {
+    color:#FFC107;
+}
+
+a.dark-link {
+    color: #FFC107;
+}
+a.dark-link:hover {
+    color:black;
+}
+
+.bold {
+    font-weight:bold;
+}
+.light {
+    font-weight:lighter;
+    color: #939393;
+}
+
+
+/**** Page Admin ****/
+/*  Sidebar  */
+.block{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media (max-width: 768px){
+    .block{
+        flex-direction: row;
+        justify-content:space-around;
+    }
+}
+
+/* Contenu */
+#enregFilm, #modifierFilm, #supprimerFilm, #modifierMembre, #genererFacturePM, #afficherProfilPM, #modifierMembrePM, #listerFilms, #accesRefuse{
+    display:none;
+}
+
+.img-lister{width:auto; max-height:72px;}
+
+.bgcolor {
+    background-color:#f8f9fa;
+}
+
+
+/*Toast*/
+.posToast{
+	position:absolute;
+	top:200px;
+	right:5%;
+    z-index: 100000;
+}
+
+.toast-header{
+    background-color:#1c1c1e;
+    color:#fff;
+}
+
+.toast-body{
+    font-size:1.25rem;
+}
+
+.btn-close{
+    position: absolute;
+    right: 0;
+    border:none;
+    font-size:1.5rem;
+}
+
+.btn-sm{
+    text-transform: uppercase;
+    font-weight:700;
+    border-style: none;
+    padding-left:15px;
+    padding-right:15px;
+    background-color: #ffffff;
+}
+
+.me-auto{
+    font-size:1.5rem;
+    font-weight:bold;
+    padding-left:1rem;
+    padding-right:4rem;
+}
+
+.montrerID {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding:0.5em;
+    background-color: white;
+    border:1px solid #dee2e6;
+    font-weight: bold;
+    border-radius: .25rem;
+    color: black;
+    opacity:0.9;
+}
+
+.modal-lg {
+    width: 75% !important; 
+ }
