@@ -3,17 +3,23 @@
 	$tabRes=array();
 	function enregistrer(){
 		global $tabRes;	
-		$titre=$_POST['titre'];
-		$duree=$_POST['duree'];
-		$res=$_POST['res'];
+		$titreFilm=$_POST['titreFilm']; 
+		$realisFilm=$_POST['realisateur']; 
+		$categFilm=$_POST['categFilm']; 
+        $dureeFilm=$_POST['dureeFilm'];
+		$langFilm=$_POST['langueFilm']; 
+        $dateFilm=$_POST['dateFilm'];
+		$urlPreview=$_POST['urlPreview'];
+        $prix=$_POST['prix'];
+		echo $titreFilm;
 		try{
 			$unModele=new filmsModele();
-			$pochete=$unModele->verserFichier("pochettes", "pochette", "avatar.jpg",$titre);
-			$requete="INSERT INTO films VALUES(0,?,?,?,?)";
-			$unModele=new filmsModele($requete,array($titre,$duree,$res,$pochete));
+			$pochette=$unModele->verserFichier("pochettes", "pochette", "avatar.jpg",$titreFilm);
+			$requete="INSERT INTO films values(0,?,?,?,?,?,?,?,?,?)";
+			$unModele=new filmsModele($requete,array($titreFilm,$realisFilm,$categFilm,$dureeFilm,$langFilm,$dateFilm,$pochette,$urlPreview,$prix));
 			$stmt=$unModele->executer();
 			$tabRes['action']="enregistrer";
-			$tabRes['msg']="<span class='alert alert-success'>Film bien enregistré.</span>";
+			$tabRes['msg']="Film bien enregistré";
 		}catch(Exception $e){
 		}finally{
 			unset($unModele);
