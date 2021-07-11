@@ -8,7 +8,7 @@ function listerF(listFilms){
 	taille=listFilms.length;
 	for(var i=0; i<taille; i++){
 		
-		rep+='<div class="col-sm-6 mb-5">';
+		rep+='<div class="col-sm-6 col-xl-4 mb-5">';
         rep+='    <div class="card">';
         rep+='        <img class="card-img-top" src="pochettes/'+listFilms[i].pochette+'" alt="'+listFilms[i].titre+'">';
         rep+='        <div class="montrerID">#'+listFilms[i].id+'</div>';
@@ -56,10 +56,17 @@ function afficherFiche(reponse){
 	uneFiche=reponse.fiche;
 	$('#formFicheF h3:first-child').html("Fiche du film numero "+uneFiche.id);
 	$('#idf').val(uneFiche.id);
-	$('#titreF').val(uneFiche.titre);
-	$('#dureeF').val(uneFiche.duree);
-	$('#resF').val(uneFiche.res);
+	$('#titreFilmM').val(uneFiche.titre);
+	$('#realisateurM').val(uneFiche.realisateur);
+	$('#categFilmM').val(uneFiche.categorie);
+	$('#dureeFilmM').val(uneFiche.duree);
+	$('#langueFilmM').val(uneFiche.langue);
+	$('#dateFilmM').val(uneFiche.annee);
+	$('#urlPreviewM').val(uneFiche.urlPreview);
+	$('#prixM').val(uneFiche.prix);
 	$('#divFormFiche').show();
+
+
 	document.getElementById('divFormFiche').style.display='block';
   }else{
 	$('#messages').html("<span class='alert alert-danger'>Film "+$('#numF').val()+" introuvable</span>");

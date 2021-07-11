@@ -55,7 +55,7 @@
 				$unModele=new filmsModele($requete,array($idf));
 				$stmt=$unModele->executer();
 				$tabRes['action']="enlever";
-				$tabRes['msg']="<span class='alert alert-success'>Le film <strong>".$idf."</strong> bien enlevé.";
+				$tabRes['msg']="<span class='alert alert-success'>Le film <strong>".$idf."</strong> a bien étéretiré.";
 			}
 			else{
 				$tabRes['action']="enlever";
@@ -71,7 +71,7 @@
 		global $tabRes;
 		$idf=$_POST['numF'];
 		$tabRes['action']="fiche";
-		$requete="SELECT * FROM films WHERE idf=?";
+		$requete="SELECT * FROM films WHERE id=?";
 		try{
 			 $unModele=new filmsModele($requete,array($idf));
 			 $stmt=$unModele->executer();
@@ -91,24 +91,31 @@
 	
 	function modifier(){
 		global $tabRes;	
-		$titre=$_POST['titreF'];
-		$duree=$_POST['dureeF'];
-		$res=$_POST['resF'];
+
 		$idf=$_POST['idf']; 
+		$titre=$_POST['titreFilmM'];
+		$res=$_POST['realisateurM'];
+		$categ=$_POST['categFilmM'];
+		$duree=$_POST['dureeFilmM'];
+		$langue=$_POST['langueFilmM'];
+		$annee=$_POST['dateFilmM'];
+		$preview=$_POST['urlPreviewM'];
+		$prix=$_POST['prixM'];
+
 		try{
 			//Recuperer ancienne pochette
-			$requette="SELECT pochette FROM films WHERE idf=?";
+			$requette="SELECT pochette FROM films WHERE id=?";
 			$unModele=new filmsModele($requette,array($idf));
 			$stmt=$unModele->executer();
 			$ligne=$stmt->fetch(PDO::FETCH_OBJ);
 			$anciennePochette=$ligne->pochette;
-			$pochette=$unModele->verserFichier("pochettes", "pochette",$anciennePochette,$titre);	
+			$pochette=$unModele->verserFichier("pochettes", "pochetteM",$anciennePochette,$titre);	
 			
-			$requete="UPDATE films SET titre=?,duree=?, res=?, pochette=? WHERE idf=?";
-			$unModele=new filmsModele($requete,array($titre,$duree,$res,$pochette,$idf));
+			$requete="UPDATE films SET titre=?,realisateur=?,categorie=?,duree=?,langue=?,annee=?, pochette=?,urlPreview=?,prix=? WHERE id=?";
+			$unModele=new filmsModele($requete,array($titre,$res,$categ,$duree,$langue,$annee,$pochette,$preview,$prix,$idf));
 			$stmt=$unModele->executer();
 			$tabRes['action']="modifier";
-			$tabRes['msg']="Film $idf bien modifie";
+			$tabRes['msg']="<span class='alert alert-success'>Le film <strong>".$idf."</strong> a été modifié avec succès.";
 		}catch(Exception $e){
 		}finally{
 			unset($unModele);
