@@ -218,7 +218,7 @@
 									</div>
 								</div>
 
-								<input type="button" class="btn btn-success" value="Envoyer" onClick="validerFormEnregFilms();enregistrer();"><br>
+								<input type="button" class="btn btn-success" value="Envoyer" onClick="gateEnreg();"><br>
 							</form>
 						</div>
 						

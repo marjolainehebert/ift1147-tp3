@@ -11,7 +11,6 @@
         $dateFilm=$_POST['dateFilm'];
 		$urlPreview=$_POST['urlPreview'];
         $prix=$_POST['prix'];
-		echo $titreFilm;
 		try{
 			$unModele=new filmsModele();
 			$pochete=$unModele->verserFichier("pochettes", "pochette", "avatar.jpg",$titreFilm);
@@ -19,7 +18,7 @@
 			$unModele=new filmsModele($requete,array($titreFilm,$realisFilm,$categFilm,$dureeFilm,$langFilm,$dateFilm,$pochete,$urlPreview,$prix));
 			$stmt=$unModele->executer();
 			$tabRes['action']="enregistrer";
-			$tabRes['msg']="Film bien enregistre";
+			$tabRes['msg']="<span class='alert alert-success'>Le film <strong>".$titreFilm."</strong> a bien été enregistré.";
 		}catch(Exception $e){
 		}finally{
 			unset($unModele);
@@ -56,11 +55,11 @@
 				$unModele=new filmsModele($requete,array($idf));
 				$stmt=$unModele->executer();
 				$tabRes['action']="enlever";
-				$tabRes['msg']="<span class='alert alert-success'>Le film ".$idf." bien enlevé.";
+				$tabRes['msg']="<span class='alert alert-success'>Le film <strong>".$idf."</strong> bien enlevé.";
 			}
 			else{
 				$tabRes['action']="enlever";
-				$tabRes['msg']="<span class='alert alert-danger'>Film ".$idf." introuvable.</span>";
+				$tabRes['msg']="<span class='alert alert-danger'>Film <strong>".$idf."</strong> introuvable.</span>";
 			}
 		}catch(Exception $e){
 		}finally{
@@ -72,7 +71,7 @@
 		global $tabRes;
 		$idf=$_POST['numF'];
 		$tabRes['action']="fiche";
-		$requete="SELECT * FROM films WHERE id=";
+		$requete="SELECT * FROM films WHERE idf=?";
 		try{
 			 $unModele=new filmsModele($requete,array($idf));
 			 $stmt=$unModele->executer();
@@ -95,21 +94,21 @@
 		$titre=$_POST['titreF'];
 		$duree=$_POST['dureeF'];
 		$res=$_POST['resF'];
-		$idf=$_POST['id']; 
+		$idf=$_POST['idf']; 
 		try{
 			//Recuperer ancienne pochette
-			$requette="SELECT pochette FROM films WHERE id=?";
+			$requette="SELECT pochette FROM films WHERE idf=?";
 			$unModele=new filmsModele($requette,array($idf));
 			$stmt=$unModele->executer();
 			$ligne=$stmt->fetch(PDO::FETCH_OBJ);
 			$anciennePochette=$ligne->pochette;
 			$pochette=$unModele->verserFichier("pochettes", "pochette",$anciennePochette,$titre);	
 			
-			$requete="UPDATE films SET titre=?,duree=?, res=?, pochette=? WHERE id=?";
+			$requete="UPDATE films SET titre=?,duree=?, res=?, pochette=? WHERE idf=?";
 			$unModele=new filmsModele($requete,array($titre,$duree,$res,$pochette,$idf));
 			$stmt=$unModele->executer();
 			$tabRes['action']="modifier";
-			$tabRes['msg']="<span class='alert alert-success'>Le film $idf à bien été modifié.";
+			$tabRes['msg']="Film $idf bien modifie";
 		}catch(Exception $e){
 		}finally{
 			unset($unModele);
