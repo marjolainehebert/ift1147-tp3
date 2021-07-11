@@ -19,7 +19,7 @@
 			$unModele=new filmsModele($requete,array($titreFilm,$realisFilm,$categFilm,$dureeFilm,$langFilm,$dateFilm,$pochete,$urlPreview,$prix));
 			$stmt=$unModele->executer();
 			$tabRes['action']="enregistrer";
-			$tabRes['msg']="Film bien enregistré";
+			$tabRes['msg']="Film bien enregistre";
 		}catch(Exception $e){
 		}finally{
 			unset($unModele);

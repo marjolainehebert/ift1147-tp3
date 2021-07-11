@@ -41,7 +41,7 @@ function afficherPanier() {
         for( var unFilm of panier){
             if(unFilm!==null){
                 lePanier+="<tr>";
-                lePanier+="<td><img src='/tp2/public/images/pochettes/"+unFilm.pochette+"' style='max-width:60px; height:auto;'></td>";
+                lePanier+="<td><img src='pochettes/"+unFilm.pochette+"' style='max-width:60px; height:auto;'></td>";
                 lePanier+="<td>"+unFilm.idFilm+"</td>";
                 lePanier+="<td>"+unFilm.titre+"</td>";
                 lePanier+="<td>"+unFilm.prix+" $</td>";
