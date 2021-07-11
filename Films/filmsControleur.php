@@ -14,9 +14,9 @@
 		echo $titreFilm;
 		try{
 			$unModele=new filmsModele();
-			$pochette=$unModele->verserFichier("pochettes", "pochette", "avatar.jpg",$titreFilm);
+			$pochete=$unModele->verserFichier("pochettes", "pochette", "avatar.jpg",$titreFilm);
 			$requete="INSERT INTO films values(0,?,?,?,?,?,?,?,?,?)";
-			$unModele=new filmsModele($requete,array($titreFilm,$realisFilm,$categFilm,$dureeFilm,$langFilm,$dateFilm,$pochette,$urlPreview,$prix));
+			$unModele=new filmsModele($requete,array($titreFilm,$realisFilm,$categFilm,$dureeFilm,$langFilm,$dateFilm,$pochete,$urlPreview,$prix));
 			$stmt=$unModele->executer();
 			$tabRes['action']="enregistrer";
 			$tabRes['msg']="Film bien enregistré";
@@ -47,12 +47,12 @@
 		global $tabRes;	
 		$idf=$_POST['numE'];
 		try{
-			$requete="SELECT * FROM films WHERE idf=?";
+			$requete="SELECT * FROM films WHERE id=?";
 			$unModele=new filmsModele($requete,array($idf));
 			$stmt=$unModele->executer();
 			if($ligne=$stmt->fetch(PDO::FETCH_OBJ)){
 				$unModele->enleverFichier("pochettes",$ligne->pochette);
-				$requete="DELETE FROM films WHERE idf=?";
+				$requete="DELETE FROM films WHERE id=?";
 				$unModele=new filmsModele($requete,array($idf));
 				$stmt=$unModele->executer();
 				$tabRes['action']="enlever";
@@ -72,7 +72,7 @@
 		global $tabRes;
 		$idf=$_POST['numF'];
 		$tabRes['action']="fiche";
-		$requete="SELECT * FROM films WHERE idf=?";
+		$requete="SELECT * FROM films WHERE id=";
 		try{
 			 $unModele=new filmsModele($requete,array($idf));
 			 $stmt=$unModele->executer();
@@ -95,17 +95,17 @@
 		$titre=$_POST['titreF'];
 		$duree=$_POST['dureeF'];
 		$res=$_POST['resF'];
-		$idf=$_POST['idf']; 
+		$idf=$_POST['id']; 
 		try{
 			//Recuperer ancienne pochette
-			$requette="SELECT pochette FROM films WHERE idf=?";
+			$requette="SELECT pochette FROM films WHERE id=?";
 			$unModele=new filmsModele($requette,array($idf));
 			$stmt=$unModele->executer();
 			$ligne=$stmt->fetch(PDO::FETCH_OBJ);
 			$anciennePochette=$ligne->pochette;
 			$pochette=$unModele->verserFichier("pochettes", "pochette",$anciennePochette,$titre);	
 			
-			$requete="UPDATE films SET titre=?,duree=?, res=?, pochette=? WHERE idf=?";
+			$requete="UPDATE films SET titre=?,duree=?, res=?, pochette=? WHERE id=?";
 			$unModele=new filmsModele($requete,array($titre,$duree,$res,$pochette,$idf));
 			$stmt=$unModele->executer();
 			$tabRes['action']="modifier";
