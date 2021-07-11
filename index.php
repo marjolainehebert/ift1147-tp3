@@ -28,6 +28,8 @@
 	<head>
 		
 		<!---->
+		<link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
 		<link rel="stylesheet" href="public/utilitaires/css/bootstrap.min.css" type="text/css">
 		<link rel="stylesheet" href="public/utilitaires/css/font-awesome.min.css" type="text/css">
 		<link rel="stylesheet" href="public/utilitaires/css/themify-icons.css" type="text/css">

@@ -23,7 +23,7 @@
 	function lister(){
 		global $tabRes;
 		$tabRes['action']="lister";
-		$requete="SELECT * FROM films";
+		$requete="SELECT * FROM films ORDER BY titre";
 		try{
 			 $unModele=new filmsModele($requete,array());
 			 $stmt=$unModele->executer();
