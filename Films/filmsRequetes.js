@@ -18,6 +18,7 @@ function enregistrer(){
 		   
 		}
 	});
+	document.getElementById("formEnreg").reset();
 }
 
 function lister(){

@@ -11,7 +11,7 @@ function __construct($requete=null,$params=null){
 }
 	
 function obtenirConnexion(){
-	$maConnexion = new Connexion("localhost", "root", "root", "h18bdfilms");
+	$maConnexion = new Connexion("localhost", "root", "root", "e21bdfilms");
 	$maConnexion->connecter();
 	return $maConnexion->getConnexion();
 }

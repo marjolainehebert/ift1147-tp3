@@ -3,17 +3,22 @@
 	$tabRes=array();
 	function enregistrer(){
 		global $tabRes;	
-		$titre=$_POST['titre'];
-		$duree=$_POST['duree'];
-		$res=$_POST['res'];
+		$titreFilm=$_POST['titreFilm']; 
+		$realisFilm=$_POST['realisateur']; 
+		$categFilm=$_POST['categFilm']; 
+        $dureeFilm=$_POST['dureeFilm'];
+		$langFilm=$_POST['langueFilm']; 
+        $dateFilm=$_POST['dateFilm'];
+		$urlPreview=$_POST['urlPreview'];
+        $prix=$_POST['prix'];
 		try{
 			$unModele=new filmsModele();
-			$pochete=$unModele->verserFichier("pochettes", "pochette", "avatar.jpg",$titre);
-			$requete="INSERT INTO films VALUES(0,?,?,?,?)";
-			$unModele=new filmsModele($requete,array($titre,$duree,$res,$pochete));
+			$pochete=$unModele->verserFichier("pochettes", "pochette", "avatar.jpg",$titreFilm);
+			$requete="INSERT INTO films values(0,?,?,?,?,?,?,?,?,?)";
+			$unModele=new filmsModele($requete,array($titreFilm,$realisFilm,$categFilm,$dureeFilm,$langFilm,$dateFilm,$pochete,$urlPreview,$prix));
 			$stmt=$unModele->executer();
 			$tabRes['action']="enregistrer";
-			$tabRes['msg']="<span class='alert alert-success'>Film bien enregistré.</span>";
+			$tabRes['msg']="<span class='alert alert-success'>Le film <strong>".$titreFilm."</strong> a bien été enregistré.";
 		}catch(Exception $e){
 		}finally{
 			unset($unModele);
@@ -23,7 +28,7 @@
 	function lister(){
 		global $tabRes;
 		$tabRes['action']="lister";
-		$requete="SELECT * FROM films";
+		$requete="SELECT * FROM films ORDER BY titre";
 		try{
 			 $unModele=new filmsModele($requete,array());
 			 $stmt=$unModele->executer();
@@ -41,20 +46,20 @@
 		global $tabRes;	
 		$idf=$_POST['numE'];
 		try{
-			$requete="SELECT * FROM films WHERE idf=?";
+			$requete="SELECT * FROM films WHERE id=?";
 			$unModele=new filmsModele($requete,array($idf));
 			$stmt=$unModele->executer();
 			if($ligne=$stmt->fetch(PDO::FETCH_OBJ)){
 				$unModele->enleverFichier("pochettes",$ligne->pochette);
-				$requete="DELETE FROM films WHERE idf=?";
+				$requete="DELETE FROM films WHERE id=?";
 				$unModele=new filmsModele($requete,array($idf));
 				$stmt=$unModele->executer();
 				$tabRes['action']="enlever";
-				$tabRes['msg']="<span class='alert alert-success'>Le film ".$idf." bien enlevé.";
+				$tabRes['msg']="<span class='alert alert-success'>Le film <strong>".$idf."</strong> bien enlevé.";
 			}
 			else{
 				$tabRes['action']="enlever";
-				$tabRes['msg']="<span class='alert alert-danger'>Film ".$idf." introuvable.</span>";
+				$tabRes['msg']="<span class='alert alert-danger'>Film <strong>".$idf."</strong> introuvable.</span>";
 			}
 		}catch(Exception $e){
 		}finally{
@@ -103,7 +108,7 @@
 			$unModele=new filmsModele($requete,array($titre,$duree,$res,$pochette,$idf));
 			$stmt=$unModele->executer();
 			$tabRes['action']="modifier";
-			$tabRes['msg']="<span class='alert alert-success'>Le film $idf à bien été modifié.";
+			$tabRes['msg']="Film $idf bien modifie";
 		}catch(Exception $e){
 		}finally{
 			unset($unModele);

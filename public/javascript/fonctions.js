@@ -66,6 +66,15 @@ function envoyerListerMembres(){
     document.getElementById('formListerMembres').submit();
 }
 
+function gateEnreg(){
+    validerEnregistrements = validerFormEnregFilms();
+    alert (validerEnregistrements);
+    if (validerEnregistrements == undefined){
+        validerEnregistrements == true;
+        enregistrer();
+    }
+}
+
 //Enregistrement des films
 function validerFormEnregFilms(){
     // obtenir les valeurs du formulaire et les mettre dans des variables
@@ -108,37 +117,30 @@ function validerFormEnregFilms(){
         mesTitre.style.display = "block"; // montrer le message d'erreur
         return false; // retourne false
     } 
-
     if (realisateur == '') { // vérifier que le titre ne soit pas vide
         mesRealis.style.display = "block"; // montrer le message d'erreur
         return false; // retourne false
     } 
-
     if (categFilm == '') { // vérifier que le titre ne soit pas vide
         mesCateg.style.display = "block"; // montrer le message d'erreur
         return false; // retourne false
     } 
-
     if(dureeFilm == '' || !regexDuree.test(dureeFilm)){
         mesDuree.style.display = "block"; // montrer le message d'erreur
 	    return false;
     } 
-
     if (langueFilm == '') { // vérifier que le titre ne soit pas vide
         mesLang.style.display = "block"; // montrer le message d'erreur
         return false; // retourne false
     } 
-
     if(dateFilm == '' || !regexDate.test(dateFilm)){
         mesDate.style.display = "block"; // montrer le message d'erreur
 	    return false;
     } 
-
     if (urlFilm == '' || !regexUrl.test(urlFilm)) { // vérifier que le titre ne soit pas vide
         mesUrl.style.display = "block"; // montrer le message d'erreur
         return false; // retourne false
     }
-
     if(prixFilm == '' || !regexPrix.test(prixFilm)){
         mesPrix.style.display = "block"; // montrer le message d'erreur
 	    return false;
