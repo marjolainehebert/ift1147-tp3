@@ -8,7 +8,7 @@ function listerF(listFilms){
 	taille=listFilms.length;
 	for(var i=0; i<taille; i++){
 		
-		rep+='<div class="col-sm-6 col-xl-4 mb-5">';
+		rep+='<div class="col-sm-6 col-md-4 col-xl-3 mb-5">';
         rep+='    <div class="card">';
         rep+='        <img class="card-img-top" src="pochettes/'+listFilms[i].pochette+'" alt="'+listFilms[i].titre+'">';
         rep+='        <div class="montrerID">#'+listFilms[i].id+'</div>';

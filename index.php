@@ -110,20 +110,19 @@
 						<input type="button" value="Enregistrer" onClick="rendreVisible('divEnreg');" class="btn btn-outline-success mb-3">
 						<input type="button" value="Lister" onClick="lister();$('#contenu').show();" class="btn btn-outline-warning mb-3" >
 						<input type="button" value="Modifier" onClick="rendreVisible('divFiche');" class="btn btn-outline-info mb-3">
-						<input type="button" value="Supprimer" onClick="rendreVisible('divEnlever');" class="btn btn-outline-danger mb-3">
-						<!--?php
+						<?php
 							if ($_SESSION['roleSess']=='A'){
 								echo '<input type="button" value="Supprimer" onClick="rendreVisible(\'divEnlever\');" class="btn btn-outline-danger mb-3">';
 							} else {
 								echo '<input type="button" value="Supprimer" onclick="montrer(\'accesRefuse\');" class="btn btn-light mb-3">';
 							}			
-						?-->
+						?>
 							
 						</div>
 
 						<h5><strong>Gestion membres</strong></h5>
 						<div class="block flex-wrap mt-3 mb-5">
-							<button class="btn btn-outline-warning mb-3" onclick="envoyerListerMembres()">Lister</button>
+							<input type="button" value="Lister" onClick="listerMembres();$('#contenu').show();" class="btn btn-outline-warning mb-3" >
 							<button class="btn btn-outline-info mb-3" onclick="montrer('modifierMembre');">Modifier</button>
 							
 						</div>
@@ -220,10 +219,10 @@
 							<form id="formEnlever">
 								<h3>Supprimer un film</h3>
 								<hr>
-								<h5>Entrez le numéro du film à supprimer</h5>
-								Numero:<input type="text" id="numE" name="numE"><br>
+								<label for="numE" class="form-label">Entrez le ID du film à supprimer</label>
+								<input type="text" class="form-control" id="numE" name="numE"><br>
 								<!--<input type="hidden" name="action" value="enlever"> pour serialize() dans Requetes -->
-								<input type="button" value="Envoyer" onClick="enlever();"><br>
+								<input type="button"  class="btn btn-danger"  value="Envoyer" onClick="enlever();"><br>
 							</form>
 						</div>
 
@@ -240,10 +239,9 @@
 							<form id="formFiche">
 								<h3>Modifier un film</h3>
 								<hr>
-								<h5>Entrez le numéro du film à modifier</h5>
-								<span onClick="rendreInvisible('divFiche')">X</span><br>
-								Numero:<input type="text" id="numF" name="numF"><br>
-								<input type="button" value="Envoyer" onClick="obtenirFiche();"><br>
+								<label for="numF" class="form-label">Entrez le ID du film à modifier</label>
+								<input type="text" class="form-control" id="numF" name="numF"><br>
+								<input type="button" value="Envoyer" class="btn btn-info" onClick="obtenirFiche();"><br>
 							</form>
 						</div>
 						<div id="divFormFiche">
@@ -388,7 +386,7 @@
 					</button>
 					</div>
 					<div class="modal-body">
-						<form class="formulaires" id="enregForm" name="enregForm" action="serveur/membres/enregistrementMembre.php" method="POST" onsubmit="return validerFormEnreg(this);">
+						<form class="formulaires" id="formEnregMembre" name="formEnregMembre">
 							<label for="prenom"><b>Prénom</b></label><br>
 							<div id="messagePrenom">Entrez votre prénom</div>
 							<input type="text" placeholder="Enter votre prénom" title="Enter votre prénom" name="prenom" id="prenom" />
@@ -434,8 +432,8 @@
 
 							
 							<div class="modal-footer">
+								<input type="button" class="btn btn-warning" value="S'enregistrer" onClick="enregistrerMembre();">
 								<button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
-								<button type="submit" class="btn btn-warning">S'enregistrer</button>
 							</div>
 						</form>
 						<div id="messageErreur"></div>
@@ -457,7 +455,8 @@
 						</button>
 						</div>
 						<div class="modal-body">
-							<form class="formulaires" id="connexionFrom" name="connexionFrom" action="serveur/membres/connexionMembre.php" method="POST" onsubmit="return validerConnexion(this);">
+							<form class="formulaires" id="connexionFrom" name="connexionFrom" >
+							<!-- <form class="formulaires" id="connexionFrom" name="connexionFrom" action="serveur/membres/connexionMembre.php" method="POST" onsubmit="return validerConnexion(this);"> -->
 								<label for="courrielMembre"><b>Courriel</b></label><br>
 								<div id="messageCourrielMembre">Entrez une adresse courriel valide dans le format votrenom@domaine.com</div>
 								<input type="text" placeholder="Entrez votre adresse courriel" name="courrielMembre" id="courrielMembre" />
