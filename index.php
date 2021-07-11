@@ -134,15 +134,6 @@
 							<h3>Enregistrer film</h3>
 							<hr>
 							<form id="formEnreg">
-								<!-- Titre:<input type="text" id="titre" name="titre"><br>
-								Duree:<input type="text" id="duree" name="duree"><br>
-								Realisateur:<input type="text" id="res" name="res"><br><br>
-								Pochette:<input type="file" id="pochette" name="pochette"><br><br>
-								<input type="button" value="Envoyer" onClick="validerFormEnregFilms();enregistrer();"><br>
-							</form>
-							<h3 class="mb-2">Enregistrer un film</h3>
-							<hr>
-							<form id="enregFilmForm" enctype="multipart/form-data" name="enregFilmForm" action="/tp2/serveur/films/enregistrerFilm.php" method="POST" onsubmit="return validerFormEnregFilms();"> -->
 								<div class="mb-3">
 									<label for="titreFilm" class="form-label">Titre du film</label>
 									<div id="messageTitre">Entrez le titre</div>
@@ -226,25 +217,28 @@
 							<form id="formEnlever">
 								<h3>Supprimer un film</h3>
 								<hr>
-								<h5>Entrez le numéro du film à supprimer</h5>
-								Numero:<input type="text" id="numE" name="numE"><br>
-								<!--<input type="hidden" name="action" value="enlever"> pour serialize() dans Requetes -->
-								<input type="button" value="Envoyer" onClick="enlever();"><br>
+								<div class="mb-3">
+									<label for="numE" class="form-label">Entrez le ID du film à supprimer</label>
+									<div id="messageSupprimer">Entrez un nombre entre 1 et 9999</div>
+									<input type="text" class="form-control" id="numE" name="numE"><br>
+								</div>
+								<input type="button" class="btn btn-danger" value="Envoyer" onClick="enlever();"><br>
 							</form>
 						</div>
+
+
 						<div id="divFiche">
 							<form id="formFiche">
 								<h3>Modifier un film</h3>
 								<hr>
-								<h5>Entrez le numéro du film à modifier</h5>
-								<span onClick="rendreInvisible('divFiche')">X</span><br>
-								Numero:<input type="text" id="numF" name="numF"><br>
-								<input type="button" value="Envoyer" onClick="obtenirFiche();"><br>
+								<div class="mb-3">
+									<label for="numF" class="form-label">Entrez le ID du film à modifier</label>
+									<div id="messageSupprimer">Entrez un nombre entre 1 et 9999</div>
+									<input type="text" class="form-control" id="numF" name="numF"><br>
+								</div>
+								<input type="button" class="btn btn-info" value="Envoyer" onClick="obtenirFiche();"><br>
 							</form>
 						</div>
-						
-						
-						
 						<div id="divFormFiche">
 							<form id="formFicheF">
 								<h3>Modifier un film</h3>
@@ -258,6 +252,15 @@
 								<input type="button" value="Modifier" onClick="modifier();"><br>
 							</form>
 						</div>
+
+						<div class="" id="accesRefuse">
+							<h3>Supprimer un film</h3>
+							<hr>
+							<div class="alert alert-danger" role="alert">
+								<strong>REFUSÉ</strong>: Vous devez être administrateur pour supprimer un film.
+							</div>
+						</div>
+
 						<div id="contenu"></div>
 						<div id="messages"></div>
 					</div>
