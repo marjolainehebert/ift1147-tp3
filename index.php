@@ -129,20 +129,11 @@
 						</div>
 					</div>
 					
-					<div class="col-12 col-md-9 col-xl-10 bgcolor pt-2 pb-2" >
+					<div class="col-12 col-md-9 col-xl-10 bgcolor pt-2 pb-2">
 						<div id="divEnreg">
 							<h3>Enregistrer film</h3>
 							<hr>
 							<form id="formEnreg">
-								<!-- Titre:<input type="text" id="titre" name="titre"><br>
-								Duree:<input type="text" id="duree" name="duree"><br>
-								Realisateur:<input type="text" id="res" name="res"><br><br>
-								Pochette:<input type="file" id="pochette" name="pochette"><br><br>
-								<input type="button" value="Envoyer" onClick="validerFormEnregFilms();enregistrer();"><br>
-							</form>
-							<h3 class="mb-2">Enregistrer un film</h3>
-							<hr>
-							<form id="enregFilmForm" enctype="multipart/form-data" name="enregFilmForm" action="/tp2/serveur/films/enregistrerFilm.php" method="POST" onsubmit="return validerFormEnregFilms();"> -->
 								<div class="mb-3">
 									<label for="titreFilm" class="form-label">Titre du film</label>
 									<div id="messageTitre">Entrez le titre</div>
@@ -176,9 +167,12 @@
 											<option value="Action">Action</option>
 											<option value="Comédie">Comédie</option>
 											<option value="Drame">Drame</option>
+											<option value="Suspense">Fantastique</option>
+											<option value="Thriller">Horreur</option>
 											<option value="Science Fiction">Science Fiction</option>
 											<option value="Suspense">Suspense</option>
 											<option value="Thriller">Thriller</option>
+
 										</select>
 									</div>
 									<div class="col-sm">
@@ -232,6 +226,16 @@
 								<input type="button" value="Envoyer" onClick="enlever();"><br>
 							</form>
 						</div>
+
+						<div class="" id="accesRefuse">
+							<h3>Supprimer un film</h3>
+							<hr>
+							<div class="alert alert-danger" role="alert">
+								<strong>REFUSÉ</strong>: Vous devez être administrateur pour supprimer un film.
+							</div>
+						</div>
+
+
 						<div id="divFiche">
 							<form id="formFiche">
 								<h3>Modifier un film</h3>
@@ -242,20 +246,90 @@
 								<input type="button" value="Envoyer" onClick="obtenirFiche();"><br>
 							</form>
 						</div>
-						
-						
-						
 						<div id="divFormFiche">
 							<form id="formFicheF">
 								<h3>Modifier un film</h3>
 								<hr>
 								<h5>Modifiez les informations du film</h5>
+
 								<input type="hidden" id="idf" name="idf">
-								Titre:<input type="text" id="titreF" name="titreF"><br>
-								Duree:<input type="text" id="dureeF" name="dureeF"><br>
-								Realisateur:<input type="text" id="resF" name="resF"><br><br>
-								Pochette:<input type="file" id="pochette" name="pochette"><br><br>
-								<input type="button" value="Modifier" onClick="modifier();"><br>
+
+								<div class="mb-3">
+									<label for="titreFilmM" class="form-label">Titre du film</label>
+									<div id="messageTitre">Entrez le titre</div>
+									<input type="text" class="form-control" id="titreFilmM" name="titreFilmM">
+								</div>
+
+								<div class="mb-3">
+									<label for="realisateurM" class="form-label">Réalisateur</label>
+									<div id="messageRealis">Entrez le nom du réalisateur</div>
+									<input type="text" class="form-control" id="realisateurM" name="realisateurM" >
+								</div>
+
+								<div class="row mb-3">
+									<div class="col-sm">
+										<label for="categFilmM" class="form-label">Catégorie</label>
+										<select id="categFilmM" name="categFilmM" class="form-control" data-placeholder="Choisir la catégorie...">
+											<option value="Action">Action</option>
+											<option value="Comédie">Comédie</option>
+											<option value="Drame">Drame</option>
+											<option value="Suspense">Fantastique</option>
+											<option value="Thriller">Horreur</option>
+											<option value="Science Fiction">Science Fiction</option>
+											<option value="Suspense">Suspense</option>
+											<option value="Thriller">Thriller</option>
+										</select>
+									</div>
+									<div class="col-sm">
+										<label for="categFilmM" class="form-label">Catégorie</label>
+										<label for="dureeFilmM" class="form-label">Durée du film</label>
+										<input type="text" class="form-control" id="dureeFilmM" name="dureeFilmM" >
+									</div>
+								</div>
+								
+								<div class="row mb-3">
+									<div class="col-sm">
+										<label for="langueFilmM" class="form-label">Langue du film</label>
+										<div id="messageLangue">Entrez le langue</div>
+										<select type="text" class="form-control" id="langueFilmM" name="langueFilmM" data-placeholder="Choisir la langue...">
+											<option value="FR">Français</option>
+											<option value="EN">English</option>
+											<option value="EU">Basque</option>
+											<option value="ES">Espagnol</option>
+											<option value="ZH">Chinese (Mandarin)</option>
+											<option value="DA">Danish</option>
+											<option value="DE">German</option>
+											<option value="PT">Portuguese</option>
+											<option value="SV">Swedish </option>
+											<option value="VI">Vietnamese</option>
+											</select>
+									</div>
+									<div class="col-sm">
+										<label for="dateFilmM" class="form-label">Année</label>
+										<div id="messageDate">Entrez l'année de la sortie du film</div>
+										<input type="text" class="form-control" id="dateFilmM" name="dateFilmM" >
+									</div>
+								</div>
+
+								<div class="mb-3">
+									<label for="pochetteM" class="form-label">Pochette: </label>
+									<input type="file" id="pochetteM" name="pochetteM">
+								</div>
+
+								<div class="row mb-3">
+									<div class="mb-3 pb-5 col-sm">
+									<label for="urlPreviewM" class="form-label">URL de l'extrait</label>
+									<div id="messageUrl">Entrez un URL valide débutant par http:// ou https://</div>
+									<input type="text" class="form-control" id="urlPreviewM" name="urlPreviewM" >
+									</div>
+									<div class="mb-3 pb-5 col-sm">
+									<label for="prix" class="form-label">Prix en dollars canadiens</label>
+									<div id="messagePrix">entrez un nombre avec 2 décimales</div>
+									<input type="text" class="form-control" id="prixM" name="prixM" >
+									</div>
+								</div>
+
+								<input type="button" class="btn btn-info" value="Modifier" onClick="modifier();">
 							</form>
 						</div>
 						<div id="contenu"></div>
@@ -421,8 +495,10 @@
                 </div>
 
 		</section>
-        
-    <div class="container">
+
+		    <!-- Footer Section Begin -->
+			<footer class="footer-section">
+        <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <div class="footer-left">
@@ -502,4 +578,3 @@
     <script src="public/utilitaires/js/main.js"></script>
 </body>
 
-</html>
