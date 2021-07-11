@@ -51,7 +51,7 @@
 	
 	
 	
-	<body>
+	<body onLoad="lister();$('#contenu').show();">
 
 		<!-- Header Section Begin -->
 		<header class="header-section">
@@ -127,7 +127,7 @@
 						</div>
 					</div>
 					
-					<div class="col-12 col-md-9 col-xl-10 bgcolor pt-2 pb-2">
+					<div class="col-12 col-md-9 col-xl-10 bgcolor pt-2 pb-2" >
 						<div id="divEnreg">
 							<form id="formEnreg">
 								<h3>Enregistrer film</h3>
