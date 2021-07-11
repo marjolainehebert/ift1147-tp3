@@ -53,7 +53,7 @@
 	
 	
 	
-	<body>
+	<body onLoad="lister();$('#contenu').show();">
 
 		<!-- Header Section Begin -->
 		<header class="header-section">
@@ -129,7 +129,7 @@
 						</div>
 					</div>
 					
-					<div class="col-12 col-md-9 col-xl-10 bgcolor pt-2 pb-2">
+					<div class="col-12 col-md-9 col-xl-10 bgcolor pt-2 pb-2" >
 						<div id="divEnreg">
 							<h3>Enregistrer film</h3>
 							<hr>
@@ -421,10 +421,8 @@
                 </div>
 
 		</section>
-
-		    <!-- Footer Section Begin -->
-			<footer class="footer-section">
-        <div class="container">
+        
+    <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <div class="footer-left">
